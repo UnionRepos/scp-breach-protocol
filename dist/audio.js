@@ -13,7 +13,7 @@ class SoundEffects {
     this.voices = new Set();
   }
 
-  async unlock() {
+  async unlock(fromGesture = false) {
     if (!this.enabled || !this.Context) return false;
     try {
       if (!this.context || this.context.state === 'closed') {
@@ -24,11 +24,14 @@ class SoundEffects {
       }
       const context = this.context;
       if (context.state === 'running') return true;
-      if (!this.resuming) {
-        this.resuming = context.resume()
+      if (!this.resuming || fromGesture) {
+        // A resume requested without activation may remain pending. A later
+        // player gesture must be able to retry rather than await it forever.
+        const attempt = context.resume()
           .then(() => context.state === 'running')
           .catch(() => false)
-          .finally(() => { this.resuming = null; });
+          .finally(() => { if (this.resuming === attempt) this.resuming = null; });
+        this.resuming = attempt;
       }
       return await this.resuming;
     } catch {

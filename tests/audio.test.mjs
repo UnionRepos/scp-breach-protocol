@@ -129,3 +129,18 @@ test('unavailable audio and initial mute do not break gameplay', async () => {
   assert.equal(await muted.tone(), false);
   assert.equal(muted.context, null);
 });
+
+
+test('a player gesture retries a resume left pending by autoplay policy', async () => {
+  let release;
+  const pending = new Promise(resolve => { release = resolve; });
+  const sound = new SoundEffects({Context: audioContext({state: 'suspended', resume: context => {
+    if (context.resumeCalls === 1) return pending;
+    release();
+  }})});
+  const effect = sound.tone();
+  assert.equal(sound.context.oscillators.length, 0);
+  assert.equal(await sound.unlock(true), true);
+  assert.equal(await effect, true);
+  assert.equal(sound.context.resumeCalls, 2);
+});

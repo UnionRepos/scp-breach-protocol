@@ -13,7 +13,7 @@ The accelerated victory check advances cleared waves directly; it verifies state
 
 ## Sound and arrow fixes
 
-- `node --test tests/audio.test.mjs`: eight passing regressions for default sound, asynchronous and shared browser unlock, master mute, cancelled pending effects, rejected resume recovery, interrupted audio, closed contexts, node cleanup, and unavailable audio.
+- `node --test tests/audio.test.mjs`: nine passing regressions for default sound, asynchronous and shared browser unlock, retry after a pending autoplay block, master mute, cancelled pending effects, rejected resume recovery, interrupted audio, closed contexts, node cleanup, and unavailable audio.
 - Chromium audio analyser measured a nonzero firing peak (0.0968) and exactly zero output while muted.
 - Sound starts when deploying, the mute setting survives reload, and suspended audio resumes on mission resume.
 - Native mobile touch deployment unlocked audio and touch firing produced shots.
