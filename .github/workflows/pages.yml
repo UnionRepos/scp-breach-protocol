@@ -25,11 +25,11 @@ jobs:
     steps:
       - name: Check out source
         uses: actions/checkout@v6
-      - name: Validate game JavaScript
+      - name: Validate combat, audio, and offline release
         run: |
-          node --check dist/game.js
-          node --check dist/audio.js
-          node --test tests/audio.test.mjs
+          node scripts/prepare-release.mjs
+          for script in dist/*.js; do node --check "$script"; done
+          node --test tests/*.test.mjs
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload game
