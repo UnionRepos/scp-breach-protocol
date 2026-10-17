@@ -5,3 +5,6 @@
 /* Touch controls are enabled by touch input on phones and tablets. */
 .touch-controls.active{display:flex}
 .overlay{background:#0c120ab0;backdrop-filter:blur(.7px)}
+
+.icon-btn i[hidden]{display:none}
+.primary{justify-content:center}

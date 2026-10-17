@@ -15,3 +15,5 @@ SCP-derived content and this game are licensed CC BY-SA 3.0. Source attributions
 ## Deployment
 
 GitHub Pages serves the `dist/` directory. The workflow in `.github/workflows/pages.yml` validates the JavaScript and deploys automatically on every push to `main`, or can be run manually from the Actions tab. No dependencies or build step are needed.
+
+Sound effects start when you deploy. Use the speaker button to mute or unmute; the setting is remembered on your device. Run the audio regression checks with `node --test tests/audio.test.mjs`.
