@@ -18,3 +18,8 @@ The accelerated victory check advances cleared waves directly; it verifies state
 - Sound starts when deploying, the mute setting survives reload, and suspended audio resumes on mission resume.
 - Native mobile touch deployment unlocked audio and touch firing produced shots.
 - No decorative arrow characters remain in initial, paused, or resumed interface text.
+
+## PWA verification
+
+- Manifest, service worker, install prompt handler, standalone metadata, and maskable vector icons are present.
+- Service worker cache is scoped to the deployed app path and uses an offline navigation fallback.

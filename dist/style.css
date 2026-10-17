@@ -8,3 +8,5 @@
 
 .icon-btn i[hidden]{display:none}
 .primary{justify-content:center}
+.install-btn{border:1px solid #4d5a43;padding:6px 8px;color:var(--orange)}
+.install-btn:hover{background:#222a1f}
